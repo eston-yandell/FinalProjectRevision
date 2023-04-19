@@ -1,8 +1,11 @@
 // Project by Eston Yandell and Jacob Moore
 // This is the main class for a D&D 5e Character Creator
 
+import javax.print.DocFlavor;
 import java.io.*;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -13,24 +16,24 @@ public class Main {
         writeToFile.useDelimiter("\\n");
         File characterFile = new File("Character.txt");
 
-        try (PrintWriter fw = new PrintWriter(new File(characterFile.toURI()))) {
+        // Hard coded opening
+        System.out.println("Welcome to the YandellMoore 5e Character Creator!\n");
+
+        Writer write = new BufferedWriter(new FileWriter(characterFile));
+        write.append(
+
+        );
+        try  {
             // Initializing more Variables
-            String line = null;
             Scanner readFile = new Scanner(characterFile);
             // While Loop to write and read
             while (
-                    (line = writeToFile.nextLine()) != null
-                            &&
-                            readFile.hasNextLine()) {
-                if ((line.trim().equalsIgnoreCase("done"))) {
-                    System.out.println("Exiting");
-                    System.exit(0);
-                }
+                            readFile.hasNextLine()
+            ) {
 
                 String data = readFile.nextLine();
                 System.out.println(data);
             } // While
-            fw.println(line);
 
             readFile.close();
         } // Try
@@ -38,5 +41,18 @@ public class Main {
             System.out.println("An Error occurred");
             e.printStackTrace();
         } // Catch
+
+        try (PrintWriter fw = new PrintWriter(new File(characterFile.toURI()))) {
+            String line = null;
+            while ((line = writeToFile.nextLine()) != null) {
+                if ((line.trim().equalsIgnoreCase("done"))) {
+                    System.out.println("Exiting");
+                    System.exit(0);
+                }
+            }
+            fw.println(line);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(File.class.getName()).log(Level.SEVERE, null, ex);
+        }
     } // main
 } // Main
