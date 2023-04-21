@@ -1,4 +1,5 @@
 //Try Integrating  this into the system itself
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +9,8 @@ public class WriteToFileExample {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for no. of fields
         System.out.println("Enter the number of fields to be written to the file:");
         int numFields = scanner.nextInt();
         scanner.nextLine(); // consume the newline character

@@ -20,9 +20,7 @@ public class Main {
         System.out.println("Welcome to the YandellMoore 5e Character Creator!\n");
 
         Writer write = new BufferedWriter(new FileWriter(characterFile));
-       /* write.append(
 
-        );*/
         try  {
             // Initializing more Variables
             Scanner readFile = new Scanner(characterFile);
