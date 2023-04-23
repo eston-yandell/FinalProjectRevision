@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class FiveEArray {
@@ -14,25 +18,34 @@ public class FiveEArray {
 
         boolean con1 = false;
 
-
         Scanner myScan = new Scanner(System.in);
+        String[] writeFile = new String[myScan.nextInt()];
 
         do {
-                    System.out.println("What is your Race?");
-
-            String myRace = myScan.nextLine();
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("CharacterFile.txt"));
+                System.out.println("What is your Race?");
+                for (String file : writeFile) {
+                    writer.write(file);
+                    writer.newLine();
+                    String myRace = myScan.nextLine();
+                } // for
+            } catch (IOException e) {
+                System.out.println("An error occured while writing to the file.");
+                e.printStackTrace();
+            } // catch
 
             boolean Race = true;
 
             for (int i = 0; i < race.length; i++) {
-                if (!myRace.equals(race[i])) {
+                if (myRace.equals(race[i])) {
                     Race = false;// creates a boolean used to track if the input is in the array
                     System.out.println("Not in the race list\n" +
                             "Please check to make sure that your spelling is correct.");
                 }// if
             }//for
 
-            if (Race) {
+            if (Race == true) {
                 System.out.println("Accepted.");
                 System.out.println("Are you sure you wish to play this race?");
                 String confirm = myScan.nextLine();
@@ -71,14 +84,14 @@ public class FiveEArray {
             if (Class) {
                 System.out.println("Accepted.");
                 System.out.println("Are you sure you wish to play this class?");
-                boolean confirmation = myScan.nextLine();
+                 confirmation = new String[]{myScan.nextLine()};
 
                 for (int i = 0; i < confirmation.length; i++) {
-                    if (con1.equals(confirmation[i])) {
+                    if (Objects.equals(con1, confirmation[i])) {
                         con1 = true;
                     }//if
                 }//for
-            } // if: Scans c1ass[] to see if the value is in the array
+            } // if: Scans characterClass[] to see if the value is in the array
             else {
                 System.out.println("Class not found.");
             }//else
