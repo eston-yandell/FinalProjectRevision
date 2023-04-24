@@ -1,7 +1,8 @@
+import java.io.*;
 import java.util.Scanner;
 
 public class FiveEArray {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String[] characterClass = {"Barbarian", "Bard", "Cleric", "Druid",
                 "Fighter", "Monk", "Paladin", "Ranger",
                 "Rogue", "Sorcerer", "Warlock", "Wizard"};
@@ -14,22 +15,26 @@ public class FiveEArray {
 
         boolean con1 = false;
 
-
         Scanner myScan = new Scanner(System.in);
 
+        Writer writeToFile = new FileWriter("CharacterFile.txt");
+        writeToFile.write(String.valueOf(myScan));
+        writeToFile.flush();
+        writeToFile.close();
+
         do {
-                    System.out.println("What is your Race?");
+            System.out.println("What is your Race?");
 
             String myRace = myScan.nextLine();
 
-            boolean Race = true;
+            boolean Race = false;
 
-            for (int i = 0; i < race.length; i++) {
-                if (!myRace.equals(race[i])) {
-                    Race = false;// creates a boolean used to track if the input is in the array
-                    System.out.println("Not in the race list\n" +
-                            "Please check to make sure that your spelling is correct.");
+            for (String races : race) {
+                if (myRace.equals(races)) {
+                    Race = true;// creates a boolean used to track if the input is in the array
+                    break;
                 }// if
+
             }//for
 
             if (Race) {
@@ -44,6 +49,8 @@ public class FiveEArray {
                 }//for
             } // if: Scans race[] to see if the value is in the array
             else {
+                System.out.println("Not in the race list\n" +
+                        "Please check to make sure that your spelling is correct.");
                 System.out.println("Race not found.");
             }//else
 
@@ -71,10 +78,10 @@ public class FiveEArray {
             if (Class) {
                 System.out.println("Accepted.");
                 System.out.println("Are you sure you wish to play this class?");
-                boolean confirmation = myScan.nextLine();
+                String confirmation1 = (myScan.nextLine());
 
                 for (int i = 0; i < confirmation.length; i++) {
-                    if (con1.equals(confirmation[i])) {
+                    if (confirmation1.equals(confirmation[i])) {
                         con1 = true;
                     }//if
                 }//for
