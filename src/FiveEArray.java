@@ -11,6 +11,8 @@ public class FiveEArray {
                 "Half-Elf", "Halfling", "Half-Orc", "Human",
                 "Tiefling"};
 
+        int[] characterLevel = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+
         String[] confirmation = {"Yes", "Y", "confirm", "yes", "y", "Confirm"};
 
         boolean con1 = false;
@@ -63,6 +65,7 @@ public class FiveEArray {
                 }//else
             } while (!con1);
 
+            // Character Class
             do {
 
                 System.out.println("What is your Class?");
@@ -86,7 +89,7 @@ public class FiveEArray {
                             con1 = true;
                         }//if
                     }//for
-                } // if: Scans c1ass[] to see if the value is in the array
+                } // if: Scans characterClass[] to see if the value is in the array
                 else {
                     System.out.println("Class not found.");
                 }//else
@@ -98,6 +101,45 @@ public class FiveEArray {
                 }//if
                 else {
                     System.out.println("Ok, please reselect your class.");
+                }//else
+            } while (!con1);
+
+            // Character Level
+            do {
+
+                System.out.println("What is your Character's Level?");
+                String myLevel = myScan.nextLine();
+
+                boolean Level = false;
+
+                for (int i = 0; i < characterLevel.length; i++) {
+                    if (myLevel.equals(characterLevel)) {
+                        Level = true;// creates a boolean used to track if the input is in the array
+                    }// if
+                }//for
+
+                if (Level) {
+                    System.out.println("Accepted.");
+                    System.out.println("Are you sure this is your correct level?");
+                    String confirmation1 = (myScan.nextLine());
+
+                    for (int i = 0; i < confirmation.length; i++) {
+                        if (confirmation1.equals(confirmation[i])) {
+                            con1 = true;
+                        }//if
+                    }//for
+                } // if: Scans characterLevel[] to see if the value is in the array
+                else {
+                    System.out.println("Class not found.");
+                }//else
+
+                if (con1) {
+                    System.out.println("Understood.");
+                    writeToFile.write(myLevel);
+                    writeToFile.write("\n");
+                }//if
+                else {
+                    System.out.println("Ok, please reselect your character's level.");
                 }//else
             } while (!con1);
 

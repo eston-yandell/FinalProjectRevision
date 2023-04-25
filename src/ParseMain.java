@@ -24,5 +24,6 @@ public class ParseMain {
         String dataArray[] = data.split("\n");
         System.out.printf("Race: %s%n", dataArray[0]);
         System.out.printf("Class: %s%n", dataArray[1]);
+        System.out.printf("Level: %s%n", dataArray[2]);
     }
 }
