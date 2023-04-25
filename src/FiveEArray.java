@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FiveEArray {
-    public static void main(String[] args) throws IOException {
+    public static void inputToFile () throws IOException {
         String[] characterClass = {"Barbarian", "Bard", "Cleric", "Druid",
                 "Fighter", "Monk", "Paladin", "Ranger",
                 "Rogue", "Sorcerer", "Warlock", "Wizard"};
@@ -17,85 +17,94 @@ public class FiveEArray {
 
         Scanner myScan = new Scanner(System.in);
 
-        Writer writeToFile = new FileWriter("CharacterFile.txt");
-        writeToFile.write(String.valueOf(myScan));
-        writeToFile.flush();
-        writeToFile.close();
+        try {
 
-        do {
-            System.out.println("What is your Race?");
+            Writer writeToFile = new FileWriter("CharacterFile.txt");
 
-            String myRace = myScan.nextLine();
+            do {
+                System.out.println("What is your Race?");
 
-            boolean Race = false;
+                String myRace = myScan.nextLine();
 
-            for (String races : race) {
-                if (myRace.equals(races)) {
-                    Race = true;// creates a boolean used to track if the input is in the array
-                    break;
-                }// if
+                boolean Race = false;
 
-            }//for
+                for (String races : race) {
+                    if (myRace.equals(races)) {
+                        Race = true;// creates a boolean used to track if the input is in the array
+                        break;
+                    }// if
 
-            if (Race) {
-                System.out.println("Accepted.");
-                System.out.println("Are you sure you wish to play this race?");
-                String confirm = myScan.nextLine();
-
-                for (int i = 0; i < confirmation.length; i++) {
-                    if (confirm.equals(confirmation[i])) {
-                        con1 = true;
-                    }//if
                 }//for
-            } // if: Scans race[] to see if the value is in the array
-            else {
-                System.out.println("Not in the race list\n" +
-                        "Please check to make sure that your spelling is correct.");
-                System.out.println("Race not found.");
-            }//else
 
-            if (con1) {
-                System.out.println("Understood.");
-            }//if
-            else {
-                System.out.println("Ok, please reselect your race.");
-            }//else
-        } while (!con1);
+                if (Race) {
+                    System.out.println("Accepted.");
+                    System.out.println("Are you sure you wish to play this race?");
+                    String confirm = myScan.nextLine();
 
-        do {
+                    for (int i = 0; i < confirmation.length; i++) {
+                        if (confirm.equals(confirmation[i])) {
+                            con1 = true;
+                        }//if
+                    }//for
+                } // if: Scans race[] to see if the value is in the array
+                else {
+                    System.out.println("Not in the race list\n" +
+                            "Please check to make sure that your spelling is correct.");
+                    System.out.println("Race not found.");
+                }//else
 
-            System.out.println("What is your Class?");
-            String myClass = myScan.nextLine();
+                if (con1) {
+                    System.out.println("Understood.");
+                    writeToFile.write(myRace);
+                    writeToFile.write("\n");
+                }//if
+                else {
+                    System.out.println("Ok, please reselect your race.");
+                }//else
+            } while (!con1);
 
-            boolean Class = false;
+            do {
 
-            for (int i = 0; i < characterClass.length; i++) {
-                if (myClass.equals(characterClass[i])) {
-                    Class = true;// creates a boolean used to track if the input is in the array
-                }// if
-            }//for
+                System.out.println("What is your Class?");
+                String myClass = myScan.nextLine();
 
-            if (Class) {
-                System.out.println("Accepted.");
-                System.out.println("Are you sure you wish to play this class?");
-                String confirmation1 = (myScan.nextLine());
+                boolean Class = false;
 
-                for (int i = 0; i < confirmation.length; i++) {
-                    if (confirmation1.equals(confirmation[i])) {
-                        con1 = true;
-                    }//if
+                for (int i = 0; i < characterClass.length; i++) {
+                    if (myClass.equals(characterClass[i])) {
+                        Class = true;// creates a boolean used to track if the input is in the array
+                    }// if
                 }//for
-            } // if: Scans c1ass[] to see if the value is in the array
-            else {
-                System.out.println("Class not found.");
-            }//else
 
-            if (con1) {
-                System.out.println("Understood.");
-            }//if
-            else {
-                System.out.println("Ok, please reselect your class.");
-            }//else
-        } while (!con1);
-    }//Main
+                if (Class) {
+                    System.out.println("Accepted.");
+                    System.out.println("Are you sure you wish to play this class?");
+                    String confirmation1 = (myScan.nextLine());
+
+                    for (int i = 0; i < confirmation.length; i++) {
+                        if (confirmation1.equals(confirmation[i])) {
+                            con1 = true;
+                        }//if
+                    }//for
+                } // if: Scans c1ass[] to see if the value is in the array
+                else {
+                    System.out.println("Class not found.");
+                }//else
+
+                if (con1) {
+                    System.out.println("Understood.");
+                    writeToFile.write(myClass);
+                    writeToFile.write("\n");
+                }//if
+                else {
+                    System.out.println("Ok, please reselect your class.");
+                }//else
+            } while (!con1);
+
+            writeToFile.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//literallyTheEntireProject
 }//FiveEArrays
