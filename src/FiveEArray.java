@@ -59,12 +59,16 @@ public class FiveEArray {
         // String of possible confirmations
         String[] confirmation = {"Yes", "Y", "confirm", "yes", "y", "Confirm"};
 
+        // Initializes the confirmation variable
         boolean con1 = false;
 
+        // User input initialized B)
         Scanner myScan = new Scanner(System.in);
 
+        // Tries all code contained within it
         try {
 
+            // Variable to write user input to a .txt file
             Writer writeToFile = new FileWriter("CharacterFile.txt");
 
             // Character Name
@@ -80,9 +84,10 @@ public class FiveEArray {
 
                 boolean Race = false;
 
+                // Most of these will look the same
                 for (String races : race) {
                     if (myRace.equals(races)) {
-                        Race = true;// creates a boolean used to track if the input is in the array
+                        Race = true; // creates a boolean used to track if the input is in the array
                         break;
                     }// if
                 }//for
@@ -99,8 +104,6 @@ public class FiveEArray {
                     }//for
                 } // if: Scans race[] to see if the value is in the array
                 else {
-                    System.out.println("Not in the race list\n" +
-                            "Please check to make sure that your spelling is correct.");
                     System.out.println("Race not found.");
                 }//else
 
