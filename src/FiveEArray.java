@@ -51,7 +51,7 @@ public class FiveEArray {
                 "Tiefling"};
 
         // int array of Possible character levels
-        int[] characterLevel = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        Integer[] characterLevel = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
         String[] characterAlignment = {
                 "Lawful Good", "Neutral Good", "Chaotic Good",
@@ -62,8 +62,12 @@ public class FiveEArray {
         // String of possible confirmations
         String[] confirmation = {"Yes", "Y", "confirm", "yes", "y", "Confirm"};
 
-        // Initializes the confirmation variable
-        boolean con1 = false;
+        // Initializes the confirmation variables
+        boolean validRace = false;
+        boolean validClass = false;
+        boolean validSubclass = false;
+        boolean validLevel = false;
+        boolean validAlignment = false;
 
         // User input initialized B)
         Scanner myScan = new Scanner(System.in);
@@ -97,12 +101,12 @@ public class FiveEArray {
                 if (Race) {
                     System.out.println("Accepted.");
                     System.out.println("Are you sure you wish to play this race?");
-                    String confirm = myScan.nextLine();
+                    String confirmRace = myScan.nextLine();
 
                     // This for loop will confirm the player's choice (It will be the same for every other do-loop)
                     for (String confirms : confirmation) {
-                        if (confirm.equals(confirms)) {
-                            con1 = true;
+                        if (confirmRace.equals(confirms)) {
+                            validRace = true;
                             break;
                         }//if
                     }//for
@@ -111,7 +115,7 @@ public class FiveEArray {
                     System.out.println("Race not found.");
                 }//else
 
-                if (con1) {
+                if (validRace) {
                     System.out.println("Understood.");
                     writeToFile.write(myRace);
                     writeToFile.write("\n");
@@ -119,9 +123,10 @@ public class FiveEArray {
                 else {
                     System.out.println("Ok, please reselect your race.");
                 }//else
-            } while (!con1);
+            } while (!validRace);
 
             // Character Class
+
             do {
 
                 System.out.println("What is your Class?");
@@ -139,11 +144,12 @@ public class FiveEArray {
                 if (Class) {
                     System.out.println("Accepted.");
                     System.out.println("Are you sure you wish to play this class?");
-                    String confirm = myScan.nextLine();
+                    String confirmClass = myScan.nextLine();
 
                     for (String confirms : confirmation) {
-                        if (confirm.equals(confirms)) {
-                            con1 = true;
+                        if (confirmClass.equals(confirms)) {
+                            validClass = true;
+                            break;
                         }//if
                     }//for
                 } // if: Scans characterClass[] to see if the value is in the array
@@ -151,7 +157,7 @@ public class FiveEArray {
                     System.out.println("Class not found.");
                 }//else
 
-                if (con1) {
+                if (validClass) {
                     System.out.println("Understood.");
                     writeToFile.write(myClass);
                     writeToFile.write("\n");
@@ -159,7 +165,7 @@ public class FiveEArray {
                 else {
                     System.out.println("Ok, please reselect your class.");
                 }//else
-            } while (!con1);
+            } while (!validClass);
 
             // Character Subclass
             do {
@@ -178,11 +184,11 @@ public class FiveEArray {
                 if (subClass) {
                     System.out.println("Accepted.");
                     System.out.println("Are you sure you wish to play this subclass?");
-                    String confirmation1 = (myScan.nextLine());
+                    String confirmSubclass = (myScan.nextLine());
 
                     for (String confirms : confirmation) {
-                        if (confirmation1.equals(confirms)) {
-                            con1 = true;
+                        if (confirmSubclass.equals(confirms)) {
+                            validSubclass = true;
                             break;
                         } // IfEnd
                     } // ForEnd
@@ -191,7 +197,7 @@ public class FiveEArray {
                     System.out.println("I've literally never heard of that subclass.... +(");
                 } // ElseEnd
 
-                if (con1) {
+                if (validSubclass) {
                     System.out.println("Understood.");
                     writeToFile.write(mySubclass);
                     writeToFile.write("\n");
@@ -199,18 +205,18 @@ public class FiveEArray {
                 else {
                     System.out.println("Ok, please reselect your subclass.");
                 }
-            } while (!con1);
+            } while (!validSubclass);
 
             // Character Level
             do {
                 System.out.println("What is your character's level?");
 
-                String myLevel = myScan.nextLine();
+                int myLevel = myScan.nextInt();
 
                 boolean Level = false;
 
                 for (int levels : characterLevel) {
-                    if (Objects.equals(myLevel, levels)) {
+                    if (myLevel == levels) {
                         Level = true;// creates a boolean used to track if the input is in the array
                         break;
                     }// if
@@ -219,11 +225,11 @@ public class FiveEArray {
                 if (Level) {
                     System.out.println("Accepted.");
                     System.out.println("Are you certain this is your level?");
-                    String confirm = myScan.nextLine();
+                    String confirmLevel = myScan.next();
 
                     for (String confirms : confirmation) {
-                        if (confirm.equals(confirms)) {
-                            con1 = true;
+                        if (confirmLevel.equals(confirms)) {
+                            validLevel = true;
                             break;
                         }//if
                     }//for
@@ -233,17 +239,17 @@ public class FiveEArray {
                             "Just min-max like the rest of us.");
                 }//else
 
-                if (con1) {
+                if (validLevel) {
                     System.out.println("Understood.");
-                    writeToFile.write(myLevel);
+                    writeToFile.write(Integer.toString(myLevel));
                     writeToFile.write("\n");
                 }//if
                 else {
                     System.out.println("Ok, please reselect your level.");
                 }//else
-            } while (!con1);
+            } while (!validLevel);
 
-            // Character Subclass
+            // Character Alignment
             do {
                 System.out.println("What is your character's alignment?");
                 String myAlignment = myScan.nextLine();
@@ -260,11 +266,11 @@ public class FiveEArray {
                 if (playerAlignment) {
                     System.out.println("Accepted.");
                     System.out.println("Are you sure you wish to play this alignment?");
-                    String confirmation1 = (myScan.nextLine());
+                    String confirmAlignment = myScan.nextLine();
 
-                    for (int i = 0; i < confirmation.length; i++) {
-                        if (confirmation1.equals(confirmation[i])) {
-                            con1 = true;
+                    for (String confirms : confirmation) {
+                        if (confirmAlignment.equals(confirms)) {
+                            validAlignment = true;
                             break;
                         } // IfEnd
                     } // ForEnd
@@ -273,7 +279,7 @@ public class FiveEArray {
                     System.out.println("Not that I'm saying you aren't valid...I'm just saying that alignment isn't real.... +(");
                 } // ElseEnd
 
-                if (con1) {
+                if (validAlignment) {
                     System.out.println("Understood.\n");
                     writeToFile.write(myAlignment);
                     writeToFile.write("\n");
@@ -281,7 +287,7 @@ public class FiveEArray {
                 else {
                     System.out.println("Ok, please reselect your alignment.");
                 }
-            } while (!con1);
+            } while (!validAlignment);
 
             System.out.printf("Name: %s%n", myName);
             writeToFile.write(myName);

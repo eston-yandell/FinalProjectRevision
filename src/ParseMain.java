@@ -1,9 +1,5 @@
-import com.sun.security.jgss.GSSUtil;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ParseMain {
@@ -21,7 +17,7 @@ public class ParseMain {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        String dataArray[] = data.split("\n");
+        String[] dataArray = data.split("\n");
         System.out.printf("Race: %s%n", dataArray[0]);
         System.out.printf("Class: %s%n", dataArray[1]);
         System.out.printf("Subclass: %s%n", dataArray[2]);

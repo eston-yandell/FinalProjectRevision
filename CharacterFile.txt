@@ -1,6 +1,0 @@
-Elf
-Dwarf
-forge domain
-50
-Chaotic Evil
-John
