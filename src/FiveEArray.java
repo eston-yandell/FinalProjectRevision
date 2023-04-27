@@ -79,6 +79,8 @@ public class FiveEArray {
             // Variable to write user input to a .txt file
             Writer writeToFile = new FileWriter("CharacterFile.txt");
 
+            System.out.println("Welcome to the YandellMoore D&D 5e character creator!\n");
+
             // Character Name
             System.out.println("What is your Character's name?");
             String myName = myScan.nextLine();

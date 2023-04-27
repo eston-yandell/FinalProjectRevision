@@ -1,5 +1,7 @@
-//Try Integrating  this into the system itself
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Try Integrating  this into the system itself                                                                             /
+// This is an example found on the internet. It demonstrates writing to files. Where its original source is I have no clue./
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
