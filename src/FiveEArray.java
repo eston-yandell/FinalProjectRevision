@@ -1,4 +1,7 @@
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class FiveEArray {
@@ -75,7 +78,6 @@ public class FiveEArray {
             System.out.println("What is your Character's name?");
             String myName = myScan.nextLine();
 
-
             // Character Race
             do {
                 System.out.println("What is your Race?");
@@ -86,7 +88,7 @@ public class FiveEArray {
 
                 // Most of these will look the same
                 for (String races : race) {
-                    if (myRace.equals(races)) {
+                    if (races.equalsIgnoreCase(myRace)) {
                         Race = true; // creates a boolean used to track if the input is in the array
                         break;
                     }// if
@@ -97,9 +99,11 @@ public class FiveEArray {
                     System.out.println("Are you sure you wish to play this race?");
                     String confirm = myScan.nextLine();
 
+                    // This for loop will confirm the player's choice (It will be the same for every other do-loop)
                     for (String confirms : confirmation) {
                         if (confirm.equals(confirms)) {
                             con1 = true;
+                            break;
                         }//if
                     }//for
                 } // if: Scans race[] to see if the value is in the array
@@ -126,18 +130,19 @@ public class FiveEArray {
                 boolean Class = false;
 
                 for (String classes : characterClass) {
-                    if (myClass.equalsIgnoreCase(classes)) {
+                    if (classes.equalsIgnoreCase(myClass)) {
                         Class = true;// creates a boolean used to track if the input is in the array
+                        break;
                     }// if
                 }//for
 
                 if (Class) {
                     System.out.println("Accepted.");
                     System.out.println("Are you sure you wish to play this class?");
-                    String confirmation1 = (myScan.nextLine());
+                    String confirm = myScan.nextLine();
 
                     for (String confirms : confirmation) {
-                        if (confirmation1.equals(confirms)) {
+                        if (confirm.equals(confirms)) {
                             con1 = true;
                         }//if
                     }//for
@@ -166,6 +171,7 @@ public class FiveEArray {
                 for (String subClasses : characterSubclass) {
                     if (mySubclass.equalsIgnoreCase(subClasses)) {
                         subClass = true;
+                        break;
                     } // IfEnd
                 } // ForEnd
 
@@ -177,6 +183,7 @@ public class FiveEArray {
                     for (String confirms : confirmation) {
                         if (confirmation1.equals(confirms)) {
                             con1 = true;
+                            break;
                         } // IfEnd
                     } // ForEnd
                 } // IfEnd
@@ -203,7 +210,7 @@ public class FiveEArray {
                 boolean Level = false;
 
                 for (int levels : characterLevel) {
-                    if (myLevel.equals(levels)) {
+                    if (Objects.equals(myLevel, levels)) {
                         Level = true;// creates a boolean used to track if the input is in the array
                         break;
                     }// if
@@ -217,6 +224,7 @@ public class FiveEArray {
                     for (String confirms : confirmation) {
                         if (confirm.equals(confirms)) {
                             con1 = true;
+                            break;
                         }//if
                     }//for
                 } // if: Scans race[] to see if the value is in the array
@@ -245,6 +253,7 @@ public class FiveEArray {
                 for (String alignment : characterAlignment) {
                     if (myAlignment.equalsIgnoreCase(alignment)) {
                         playerAlignment = true;
+                        break;
                     } // IfEnd
                 } // ForEnd
 
@@ -256,6 +265,7 @@ public class FiveEArray {
                     for (int i = 0; i < confirmation.length; i++) {
                         if (confirmation1.equals(confirmation[i])) {
                             con1 = true;
+                            break;
                         } // IfEnd
                     } // ForEnd
                 } // IfEnd

@@ -1,6 +1,6 @@
 Elf
-dorf
-Forge Domain
-234
-aldsfj
+Dwarf
+forge domain
+50
+Chaotic Evil
 John
