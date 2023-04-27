@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FiveEArray {
-    public static void inputToFile () throws IOException {
+    public static void inputToFile() throws IOException {
         String[] characterClass = {"Barbarian", "Bard", "Cleric", "Druid",
                 "Fighter", "Monk", "Paladin", "Ranger",
                 "Rogue", "Sorcerer", "Warlock", "Wizard"};
@@ -23,6 +23,12 @@ public class FiveEArray {
 
             Writer writeToFile = new FileWriter("CharacterFile.txt");
 
+            // Character Name
+            System.out.println("What is your Character's name?");
+            String myName = myScan.nextLine();
+
+
+            // Character Race
             do {
                 System.out.println("What is your Race?");
 
@@ -113,10 +119,10 @@ public class FiveEArray {
                 boolean Level = false;
 
                 for (int i = 0; i < characterLevel.length; i++) {
-                    if (myLevel.equals(characterLevel)) {
-                        Level = true;// creates a boolean used to track if the input is in the array
-                    }// if
-                }//for
+                    if (myLevel.equals(characterLevel[i])) {
+                        Level = true;
+                    } // creates a boolean used to track if the input is in the array
+                } // ForEnd
 
                 if (Level) {
                     System.out.println("Accepted.");
@@ -130,11 +136,11 @@ public class FiveEArray {
                     }//for
                 } // if: Scans characterLevel[] to see if the value is in the array
                 else {
-                    System.out.println("Class not found.");
-                }//else
+                    System.out.println("Level Unavailable.");
+                }
 
                 if (con1) {
-                    System.out.println("Understood.");
+                    System.out.println("Understood.\n");
                     writeToFile.write(myLevel);
                     writeToFile.write("\n");
                 }//if
@@ -143,9 +149,10 @@ public class FiveEArray {
                 }//else
             } while (!con1);
 
+            System.out.printf("Name: %s%n", myName);
+            writeToFile.write(myName);
             writeToFile.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }//literallyTheEntireProject

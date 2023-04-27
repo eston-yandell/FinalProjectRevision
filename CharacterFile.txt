@@ -1,3 +1,4 @@
-Dragonborn
-Sorcerer
-9
+Dwarf
+Cleric
+1000
+Johhny
