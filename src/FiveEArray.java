@@ -250,14 +250,17 @@ public class FiveEArray {
             } while (!validLevel);
 
             // Character Alignment
+
             do {
+
                 System.out.println("What is your character's alignment?");
+
                 String myAlignment = myScan.nextLine();
 
                 boolean playerAlignment = false;
 
                 for (String alignment : characterAlignment) {
-                    if (myAlignment.equalsIgnoreCase(alignment)) {
+                    if (alignment.equalsIgnoreCase(myAlignment)) {
                         playerAlignment = true;
                         break;
                     } // IfEnd
@@ -288,6 +291,7 @@ public class FiveEArray {
                     System.out.println("Ok, please reselect your alignment.");
                 }
             } while (!validAlignment);
+
 
             System.out.printf("Name: %s%n", myName);
             writeToFile.write(myName);
