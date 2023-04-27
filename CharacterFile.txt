@@ -1,4 +1,7 @@
-Dwarf
+Elf
 Cleric
-1000
-Johhny
+Forge Domain
+5
+Lawful Good
+
+John
