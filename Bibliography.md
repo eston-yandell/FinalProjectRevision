@@ -10,7 +10,9 @@ W3schools.com
 
 geeksforgeeks.org
 
-and many many many Youtube videos
+WOTC D&D 5e Player Handbook
+
+and many many many YouTube videos
 
 Those involved with the project: 
 

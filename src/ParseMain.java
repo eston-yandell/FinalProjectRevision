@@ -9,8 +9,9 @@ public class ParseMain {
     public static void ParseMain (String FileName) throws FileNotFoundException {
         String data = "";
         try {
-            File myObj = new File(FileName);
-            Scanner myReader = new Scanner(myObj);
+
+            File myObj = new File(FileName); // Creating a new File object, which calls on the String set in the class.
+            Scanner myReader = new Scanner(myObj); // Makes a scanner for the File object
             while (myReader.hasNextLine()) {
                data += myReader.nextLine();
                data += "\n";
@@ -20,6 +21,8 @@ public class ParseMain {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+
+        // Filters user input (minus the username) into an array and splits it by new line character (\n)
         String[] dataArray = data.split("\n");
         System.out.printf("Race: %s%n", dataArray[0]);
         System.out.printf("Class: %s%n", dataArray[1]);
